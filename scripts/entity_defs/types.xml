@@ -1,0 +1,215 @@
+<root>
+	<DBID>			INT64		    </DBID>
+  <SPACE_ID>			UINT32		</SPACE_ID>
+  <ENTITY_ID>			INT32		</ENTITY_ID>
+  <ENTITY_UTYPE>		UINT32		</ENTITY_UTYPE>
+
+  <!-- 游戏场次 -->
+	<GAME_LEVEL> FIXED_DICT
+		<Properties>
+			<baseScore> <Type>	INT32	</Type> </baseScore>
+			<goldMin> <Type>	INT32	</Type> </goldMin>
+		</Properties>
+	</GAME_LEVEL>
+
+  <MJ_SCORE_PLAYER> FIXED_DICT
+    <Properties>
+      <seatIdx> <Type>	UINT8	</Type> </seatIdx>
+      <score> <Type>	INT32	</Type> </score>
+    </Properties>
+  </MJ_SCORE_PLAYER>
+
+  <ROOM_PLAYER> FIXED_DICT
+		<Properties>
+			<playerName> <Type>	UNICODE	</Type> </playerName>
+      <seatIdx> <Type>	UINT8	</Type> </seatIdx>
+      <isReady> <Type>	UINT8	</Type> </isReady>
+      <winScore> <Type>	INT32	</Type> </winScore>
+		</Properties>
+	</ROOM_PLAYER>
+
+  <MJ_MELD> FIXED_DICT
+		<Properties>
+			<strMeldType> <Type>	UNICODE	</Type> </strMeldType>
+			<tiles>
+        <Type>	ARRAY <of> UINT8 </of>	</Type>
+      </tiles>
+		</Properties>
+	</MJ_MELD>
+
+  <MJ_WIN_DICT> FIXED_DICT
+		<Properties>
+			<strWinType> <Type>	UNICODE	</Type> </strWinType>
+			<winCount> <Type>	UINT8	</Type> </winCount>
+		</Properties>
+	</MJ_WIN_DICT>
+
+  <MJ_RECONNECT_INFO> FIXED_DICT
+    <Properties>
+      <roomId> <Type> SPACE_ID </Type> </roomId>
+      <gameName> <Type> UNICODE </Type> </gameName>
+      <curRound> <Type> UINT8 </Type> </curRound>
+      <maxRound> <Type> UINT8 </Type> </maxRound>
+      <playerCount> <Type> UINT8 </Type> </playerCount>
+      <ghostTile> <Type> UINT8 </Type> </ghostTile>
+      <leftNum> <Type> UINT8 </Type> </leftNum>
+      <lastOutputTile> <Type> UINT8 </Type> </lastOutputTile>
+      <lastDiscardSeat> <Type> UINT8 </Type> </lastDiscardSeat>
+      <bankerIdx> <Type> UINT8 </Type> </bankerIdx>
+      <curTurn> <Type> UINT8 </Type> </curTurn>
+      <bOutputTile> <Type> UINT8 </Type> </bOutputTile>
+    </Properties>
+  </MJ_RECONNECT_INFO>
+
+  <MJ_FINAL_PLAYER_DATA> FIXED_DICT
+    <Properties>
+      <playerName> <Type>	UNICODE	</Type> </playerName>
+      <isOwner> <Type>	UINT8	</Type> </isOwner>
+      <winScore> <Type>	INT32	</Type> </winScore>
+      <winList> <Type>	ARRAY <of> MJ_WIN_DICT </of>	</Type> </winList>
+    </Properties>
+  </MJ_FINAL_PLAYER_DATA>
+
+  <MJ_FINAL_RESULT_INFO>	FIXED_DICT
+    <implementedBy>MJ_FINAL_RESULT_INFO.mj_final_result_info_inst</implementedBy>
+    <Properties>
+      <roomId>
+        <Type> SPACE_ID </Type>
+      </roomId>
+      <playerCount>
+        <Type> UINT8 </Type>
+      </playerCount>
+      <totalRound>
+        <Type> UINT8 </Type>
+      </totalRound>
+      <endTime>
+        <Type> UNICODE </Type>
+      </endTime>
+      <mjFinalPlayerData>
+        <Type> ARRAY <of> MJ_FINAL_PLAYER_DATA </of> </Type>
+      </mjFinalPlayerData>
+    </Properties>
+  </MJ_FINAL_RESULT_INFO>
+
+  <MJ_FINAL_RESULT_INFO_LIST>	FIXED_DICT
+		<implementedBy>MJ_FINAL_RESULT_INFO.MJ_FINAL_RESULT_INFO_LIST_PICKLER</implementedBy>
+		<Properties>
+			<values>
+				<Type>	ARRAY <of> MJ_FINAL_RESULT_INFO </of>	</Type>
+			</values>
+		</Properties>
+	</MJ_FINAL_RESULT_INFO_LIST>
+
+  <MJ_GAME_RESULT_PLAYER>	FIXED_DICT
+		<implementedBy>MJ_GAME_RESULT_PLAYER.mj_game_result_player_inst</implementedBy>
+		<Properties>
+			<seatIdx>
+				<Type>	UINT8	</Type>
+			</seatIdx>
+			<angangTiles>
+				<Type>	ARRAY <of> UINT8 </of>	</Type>
+			</angangTiles>
+			<handTileStack>
+				<Type>	ARRAY <of> UINT8 </of>	</Type>
+			</handTileStack>
+      <isDianPao>
+        <Type>	UINT8	</Type>
+      </isDianPao>
+      <winScore>
+        <Type>	INT32	</Type>
+      </winScore>
+		</Properties>
+	</MJ_GAME_RESULT_PLAYER>
+
+	<MJ_GAME_RESULT_PLAYER_LIST>	FIXED_DICT
+		<implementedBy>MJ_GAME_RESULT_PLAYER.MJ_GAME_RESULT_PLAYER_LIST_PICKLER</implementedBy>
+		<Properties>
+			<values>
+				<Type>	ARRAY <of> MJ_GAME_RESULT_PLAYER </of>	</Type>
+			</values>
+		</Properties>
+	</MJ_GAME_RESULT_PLAYER_LIST>
+
+  <MJ_GAME_PLAYER>	FIXED_DICT
+		<implementedBy>MJ_GAME_PLAYER.mj_game_player_inst</implementedBy>
+		<Properties>
+			<huaScore>
+				<Type>	UINT8	</Type>
+			</huaScore>
+			<dictMeld>
+				<Type>	ARRAY <of> MJ_MELD </of>	</Type>
+			</dictMeld>
+			<handTileStack>
+				<Type>	ARRAY <of> UINT8 </of>	</Type>
+			</handTileStack>
+      <outputTiles>
+				<Type>	ARRAY <of> UINT8 </of>	</Type>
+			</outputTiles>
+      <tilesCount>
+        <Type>	UINT8	</Type>
+      </tilesCount>
+      <seatIdx>
+        <Type>	UINT8	</Type>
+      </seatIdx>
+      <playerName>
+        <Type>	UNICODE	</Type>
+      </playerName>
+      <isOffline>
+        <Type>	UINT8	</Type>
+      </isOffline>
+      <winScore>
+        <Type>	INT32	</Type>
+      </winScore>
+		</Properties>
+	</MJ_GAME_PLAYER>
+
+	<MJ_GAME_PLAYER_LIST>	FIXED_DICT
+		<implementedBy>MJ_GAME_PLAYER.MJ_GAME_PLAYER_LIST_PICKLER</implementedBy>
+		<Properties>
+			<values>
+				<Type>	ARRAY <of> MJ_GAME_PLAYER </of>	</Type>
+			</values>
+		</Properties>
+	</MJ_GAME_PLAYER_LIST>
+
+  <AVATAR_INFOS>	FIXED_DICT
+		<implementedBy>AVATAR_INFOS.avatar_info_inst</implementedBy>
+		<Properties>
+			<dbid>
+				<Type>	DBID	</Type>
+			</dbid>
+			<name>
+				<Type>	UNICODE	</Type>
+				<DatabaseLength> 256 </DatabaseLength>
+			</name>
+			<roleType>
+				<Type>	UINT8	</Type>
+			</roleType>
+			<gold>
+				<Type>	UINT16	</Type>
+			</gold>
+      <seatIdx>
+        <Type>	UINT8	</Type>
+      </seatIdx>
+      <isReady>
+        <Type>	UINT8	</Type>
+      </isReady>
+      <winScore>
+        <Type>	INT32	</Type>
+      </winScore>
+      <isRobot>
+        <Type>	UINT8	</Type>
+      </isRobot>
+		</Properties>
+	</AVATAR_INFOS>
+
+	<AVATAR_INFOS_LIST>	FIXED_DICT
+		<implementedBy>AVATAR_INFOS.AVATAR_INFOS_LIST_PICKLER</implementedBy>
+		<Properties>
+			<values>
+				<Type>	ARRAY <of> AVATAR_INFOS </of>	</Type>
+			</values>
+		</Properties>
+	</AVATAR_INFOS_LIST>
+
+</root>

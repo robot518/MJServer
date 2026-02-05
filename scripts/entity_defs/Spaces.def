@@ -1,0 +1,71 @@
+<root>
+	<Interfaces>
+		<Interface>			GameObject		</Interface>
+	</Interfaces>
+
+	<Properties>
+    <mjResultList>
+			<Type> MJ_FINAL_RESULT_INFO_LIST </Type>
+			<Flags> BASE_AND_CLIENT </Flags>
+			<Persistent> true </Persistent>
+		</mjResultList>
+	</Properties>
+
+	<BaseMethods>
+    <!-- 请求匹配房间 -->
+    <doMatchGame>
+        <Arg>	ENTITYCALL	</Arg>
+        <Arg>	UNICODE	</Arg>
+        <Arg>	UINT8	</Arg>
+        <Arg>	UINT8	</Arg>
+        <Arg>	UINT8	</Arg>
+    </doMatchGame>
+
+    <doPlayerJoinSpace>
+        <Arg>	ENTITYCALL	</Arg>
+        <Arg>	SPACE_ID	</Arg>
+    </doPlayerJoinSpace>
+
+
+    <loginToSpaces>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		ENTITY_UTYPE	</Arg>
+			<Arg>		PYTHON			</Arg>
+		</loginToSpaces>
+
+		<loginToSpace>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		ENTITY_UTYPE	</Arg>
+			<Arg>		PYTHON			</Arg>
+		</loginToSpace>
+
+		<logoutSpace>
+			<Arg>		ENTITY_ID		</Arg>
+			<Arg>		SPACE_ID		</Arg>
+		</logoutSpace>
+
+		<onSpaceLoseCell>
+			<Arg>		ENTITY_UTYPE	</Arg>
+			<Arg>		DBID			</Arg>
+		</onSpaceLoseCell>
+
+		<onSpaceGetCell>
+			<Arg>		ENTITY_UTYPE	</Arg>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		DBID			</Arg>
+		</onSpaceGetCell>
+
+    <disbandRoom>
+        <Arg>	SPACE_ID	</Arg>
+        <Arg>	ARRAY <of> MJ_FINAL_PLAYER_DATA	</of> </Arg>
+    </disbandRoom>
+
+    <onNextRound>
+        <Arg>	SPACE_ID	</Arg>
+        <Arg>	ARRAY <of> MJ_SCORE_PLAYER	</of>	</Arg>
+    </onNextRound>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+</root>

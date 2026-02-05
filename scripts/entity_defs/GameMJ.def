@@ -1,0 +1,56 @@
+<root>
+	<Interfaces>
+    <Interface>			GameObject			</Interface>
+	</Interfaces>
+
+	<Properties>
+      <gameResultPlayers>
+        <Type>			MJ_GAME_RESULT_PLAYER_LIST		</Type>
+        <Flags>			CELL_PRIVATE					</Flags>
+        <Default>								</Default>
+      </gameResultPlayers>
+
+      <gamePlayers>
+        <Type>			MJ_GAME_PLAYER_LIST		</Type>
+        <Flags>			CELL_PRIVATE					</Flags>
+        <Default>								</Default>
+      </gamePlayers>
+  </Properties>
+
+	<BaseMethods>
+		<loginToSpace>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		PYTHON			</Arg>
+		</loginToSpace>
+
+		<logoutSpace>
+			<Arg>		UINT8		</Arg>
+		</logoutSpace>
+
+		<onEnter>
+			<Arg>		ENTITYCALL		</Arg>
+		</onEnter>
+
+		<onLeave>
+			<Arg>		ENTITY_ID		</Arg>
+		</onLeave>
+	</BaseMethods>
+
+	<CellMethods>
+		<onEnter>
+			<Arg>		ENTITYCALL		</Arg>
+      <Arg>		UINT8		</Arg>
+		</onEnter>
+
+		<onLeave>
+			<Arg>		ENTITY_ID		</Arg>
+		</onLeave>
+
+    <onGameStart>
+      <Arg>		UINT8		</Arg>
+      <Arg>		UINT8		</Arg>
+      <Arg>		SPACE_ID		</Arg>
+      <Arg>		UINT8		</Arg>
+    </onGameStart>
+	</CellMethods>
+</root>

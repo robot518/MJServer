@@ -1,0 +1,238 @@
+<root>
+  <Interfaces>
+		<Interface>	GameObject		</Interface>
+	</Interfaces>
+
+	<Properties>
+		<roleType>
+			<Type>			UINT8		</Type>
+			<Flags>			BASE		</Flags>
+			<Persistent>	true		</Persistent>
+		</roleType>
+
+		<gold>
+			<Utype>			41002		</Utype>
+			<Type>			UINT16		</Type>
+			<Flags>			CELL_PUBLIC_AND_OWN			</Flags>
+			<Persistent>	true		</Persistent>
+		</gold>
+
+    <seatIdx>
+			<Type>			UINT8		</Type>
+			<Flags>			BASE		</Flags>
+			<Persistent>	true		</Persistent>
+		</seatIdx>
+
+    <isReady>
+      <Type>			UINT8		</Type>
+      <Flags>			BASE		</Flags>
+      <Persistent>	true		</Persistent>
+    </isReady>
+
+    <winScore>
+      <Type>			INT32		</Type>
+      <Flags>			BASE		</Flags>
+      <Persistent>	true		</Persistent>
+    </winScore>
+
+    <isRobot>
+      <Type>			UINT8		</Type>
+      <Flags>			CELL_PUBLIC_AND_OWN		</Flags>
+      <Persistent>	true		</Persistent>
+    </isRobot>
+
+		<!--
+		<playerName>
+			<Type>			UNICODE		</Type>
+			<Flags>			ALL_CLIENTS	</Flags>
+			<Persistent>	true		</Persistent>
+			<Index> 		UNIQUE 		</Index> 属性的索引类别，UNIQUE, INDEX，分别对应唯一索引、普通索引
+			<DatabaseLength> 32			</DatabaseLength>
+		</playerName>
+		-->
+
+		<own_val>
+			<Type>			UINT16		</Type>
+			<Flags>			OWN_CLIENT	</Flags>
+		</own_val>
+	</Properties>
+
+	<BaseMethods>
+    <createCell>
+      <Arg>			ENTITYCALL	</Arg>
+    </createCell>
+
+    <reqCreateRoom>
+        <Exposed/>
+        <Arg>	UNICODE	</Arg>
+        <Arg>	UINT8	</Arg>
+        <Arg>	UINT8	</Arg>
+        <Arg>	UINT8	</Arg>
+    </reqCreateRoom>
+    <reqJoinRoom>
+        <Exposed/>
+        <Arg>	SPACE_ID	</Arg>
+    </reqJoinRoom>
+    <reqLeaveRoom>
+        <Exposed/>
+        <Arg>	SPACE_ID	</Arg>
+    </reqLeaveRoom>
+
+    <reqPrepare>
+        <Exposed/>
+        <Arg>	SPACE_ID	</Arg>
+        <Arg>	UINT8	</Arg>
+    </reqPrepare>
+
+    <reqMJFinalResult>
+      <Exposed/>
+      <Arg>	SPACE_ID	</Arg>
+    </reqMJFinalResult>
+  </BaseMethods>
+
+  <CellMethods>
+    <joinRoom>
+      <Exposed/>
+      <Arg>	SPACE_ID	</Arg>
+    </joinRoom>
+
+
+    <reqBeLandLord>
+      <Exposed/>
+      <Arg>	UINT8	</Arg>
+    </reqBeLandLord>
+
+    <reqOutputCards>
+      <Exposed/>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+    </reqOutputCards>
+
+    <reqPass>
+      <Exposed/>
+    </reqPass>
+
+    <reqOutputMjTile>
+      <Exposed/>
+      <Arg>	UINT8 </Arg>
+    </reqOutputMjTile>
+
+    <reqNewTile>
+      <Exposed/>
+    </reqNewTile>
+
+    <reqMeldEvent>
+      <Exposed/>
+      <Arg>	UNICODE </Arg>
+      <Arg>	UINT8 </Arg>
+    </reqMeldEvent>
+  </CellMethods>
+
+  <ClientMethods>
+    <onInitRoom>
+      <Arg>	SPACE_ID	</Arg>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	ARRAY <of> ROOM_PLAYER	</of>	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onInitRoom>
+
+    <onPlayerJoinRoom>
+      <Arg>	SPACE_ID	</Arg>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	UINT16	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onPlayerJoinRoom>
+
+    <onReqJoinRoomFailed>
+      <Arg>	UINT16	</Arg>
+    </onReqJoinRoomFailed>
+
+    <onReqLeaveRoom>
+      <Arg>	UINT8	</Arg>
+    </onReqLeaveRoom>
+
+    <onLoginSpacesCallback>
+    </onLoginSpacesCallback>
+
+    <onReqPrepare>
+      <Arg>	SPACE_ID	</Arg>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onReqPrepare>
+
+    <onDdzGameStart>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onDdzGameStart>
+
+    <onReqBeLandLord>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+    </onReqBeLandLord>
+
+    <onReqOutputCards>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onReqOutputCards>
+
+    <onReqPass>
+      <Arg>	UINT8	</Arg>
+    </onReqPass>
+
+
+    <onMjGameStart>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+      <Arg>	ARRAY <of> UINT8	</of>	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onMjGameStart>
+
+    <onReqOutputMjTile>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onReqOutputMjTile>
+
+    <onReqNewTile>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onReqNewTile>
+
+    <onReqMeldEvent>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onReqMeldEvent>
+
+    <onMJGameResult>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UNICODE	</Arg>
+      <Arg>	MJ_GAME_RESULT_PLAYER_LIST	</Arg>
+    </onMJGameResult>
+
+    <onReqMJFinalResult>
+      <Arg>	MJ_FINAL_RESULT_INFO	</Arg>
+    </onReqMJFinalResult>
+
+
+    <onReConnectRoom>
+      <Arg>	MJ_RECONNECT_INFO	</Arg>
+      <Arg>	MJ_GAME_PLAYER_LIST	</Arg>
+    </onReConnectRoom>
+
+    <onOffline>
+      <Arg>	UINT8	</Arg>
+      <Arg>	UINT8	</Arg>
+    </onOffline>
+  </ClientMethods>
+</root>
+
